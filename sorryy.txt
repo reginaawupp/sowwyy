@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Untuk Kamu</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* Card */
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    width:380px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    animation:muncul 2s ease;
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+#text{
+    color:#444;
+    font-size:16px;
+    line-height:1.6;
+    min-height:180px;
+}
+
+/* tombol */
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d6d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#e63950;
+}
+
+/* animasi card muncul */
+@keyframes muncul{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* hati jatuh */
+.heart{
+    position:absolute;
+    top:-10px;
+    color:red;
+    font-size:20px;
+    animation:jatuh linear infinite;
+}
+
+@keyframes jatuh{
+    0%{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Untuk Kamu ❤️</h1>
+
+<div id="text"></div>
+
+<button onclick="alert('Terima kasih sudah membaca ❤️')">
+Aku Harap Kamu Mengerti
+</button>
+</div>
+
+<script>
+
+const message = `maybe kamu udah muak dengan kata "maaf", tapi aku tetap mau bilang maaf untuk semuanya.
+sorry i'm a problematic person, sorry for everything.
+sebisa ku berusaha bikin kamu nyaman lagi sama aku, tolong jangan tinggalin aku yaa
+aku bakal berusaha bikin kamu sayang lagi sama aku.
+aku sayang banget sama kamu bahkan mungkin lebih dari aku sayang ke diriku sendiri.
+tolong jangan ada pikiran untuk mengakhiri hubungan kita ya sayang,
+i hope you know i really love you.
+you'll always be in my heart, now and always...`;
+
+let i = 0;
+function typing(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typing,40);
+    }
+}
+
+typing();
+
+/* membuat hati jatuh */
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*5)+"s";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
